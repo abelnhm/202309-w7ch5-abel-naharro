@@ -1,27 +1,29 @@
-# Week 7 - Challenge 2
+# Week 7 - Challenge WeekEnd
 
-## API REST Things I already know / Lo que queráis (V)
+## Red social
 
-Continuamos el API REST del Challenge anterior, que:
+Crea una red social con React. La aplicación sólo se puede usar estando logueado (en abierto únicamente se puede ver login y registro), y una vez iniciada la sesión, el usuario puede ver un listado de todos los usuarios de la red.
 
-- un endpoint de Films
-- un endpoint de Users
+El usuario podrá editar su perfil.
 
-Utilizan repos que conecta con MongoDB usando Mongoose
+De cada usuario podrá ver su perfil, y podrá añadirlo como amigo o como enemigo (o cambiar entre ambos). Es decir, yo como usuario veo todos los demás usuarios, y además puedo tener una relación con algunos de ellos. Esa relación puede ser de amigo o de enemigo (recuerda: puede no haber relación).
 
-- El modelo de datos estará representado como "entity" en una carpeta/fichero independiente.
-- Las rutas son /register y /login
-- El repositorio y el controller son clases que se instancian en el Router.
-- El interface del repositorio se inyecta en el controller (inversión de dependencias).
-- Les errores se controlan mediante un middleware de errores.
+En el listado de usuarios debe poder haber un filtro para enseñar:
 
-/register registra usuarios y **encripta** la password
-/login comprueba el login y si es correcto devuelve los datos del usuario y **el token**
+- todos los usuarios
+- sólo los amigos
+- sólo los enemigos
 
-Creamos un interceptor para el login y protegemos las rutas de Films
+El listado debe mostrar el total de usuarios (o amigos/enemigos si se ha usado el filtro).
 
-Probamos que funciona desde postman y desde un front
+La red social consumirá los datos de una API desarrollada con Express, conectada a una base de datos en MongoDB. La validación de usuario se implementará mediante JWT.
 
-Se testa el 100% del backend completo: Things & Films & User & All.
+## Extra
 
-Se publica en Render (https://render.com/)
+La API mantendrá un log de todas las relaciones, almacenado en un archivo de texto en el servidor. Cada vez que se cree o destruya una relación (de cualquiera de los dos tipos), se debe añadir una línea al log, con uno de estos tres formatos:
+
+New relationship: Luis & Marta (friends)
+
+New relationship: Luis & Marta (enemies)
+
+Removed relationship: Luis & Marta
