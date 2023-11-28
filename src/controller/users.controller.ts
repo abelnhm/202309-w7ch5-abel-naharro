@@ -45,6 +45,15 @@ export class UsersController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
+      req.body.image = {
+        publicId: req.file?.filename,
+        format: req.file?.mimetype,
+        url: req.file?.path,
+        size: req.file?.size,
+      };
+
+      debug('Controller-create:', req.body.image);
+
       const result = await this.repo.create(req.body);
       res.status(201);
       res.statusMessage = 'Created';
