@@ -7,6 +7,14 @@ const usersSchema = new Schema<User>({
   passwd: { type: String, required: true },
   name: { type: String, required: true },
   surname: String,
+  image: {
+    publicId: String,
+    size: Number,
+    width: Number,
+    height: Number,
+    format: String,
+    url: String,
+  },
   friends: [
     {
       type: [Schema.Types.ObjectId],

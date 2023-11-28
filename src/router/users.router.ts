@@ -3,6 +3,7 @@ import createDebug from 'debug';
 import { UsersMongoRepo } from '../repos/users/users.mongo.repo.js';
 import { UsersController } from '../controller/users.controller.js';
 import { AuthInterceptor } from '../middleware/auth.interceptor.js';
+import { FileInterceptor } from '../middleware/file.interceptor.js';
 
 const debug = createDebug('W7E:router');
 
@@ -12,6 +13,7 @@ debug('Starting');
 
 const repo = new UsersMongoRepo();
 const controller = new UsersController(repo);
+const fileInterceptor = new FileInterceptor();
 
 usersRouter.get(
   '/',
@@ -25,5 +27,9 @@ usersRouter.get(
 );
 usersRouter.patch('/:id', controller.update.bind(controller));
 
-usersRouter.post('/register', controller.create.bind(controller));
+usersRouter.post(
+  '/register',
+  fileInterceptor.singleFileStore('image').bind(fileInterceptor),
+  controller.create.bind(controller)
+);
 usersRouter.post('/login', controller.login.bind(controller));
