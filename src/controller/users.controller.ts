@@ -2,13 +2,18 @@ import { NextFunction, Request, Response } from 'express';
 import createDebug from 'debug';
 import { UsersMongoRepo } from '../repos/users/users.mongo.repo.js';
 import { Auth } from '../services/auth.js';
+import { CloudinaryMediaFiles } from '../services/cloudinary.media.files.js';
+import { HttpError } from '../types/http.error.js';
 
 const debug = createDebug('W7E:controller');
 
 export class UsersController {
+  cloudinaryService: CloudinaryMediaFiles;
+
   // eslint-disable-next-line no-unused-vars
   constructor(private repo: UsersMongoRepo) {
     debug('Instantiated: UsersController');
+    this.cloudinaryService = new CloudinaryMediaFiles();
   }
 
   async login(req: Request, res: Response, next: NextFunction) {
@@ -45,11 +50,17 @@ export class UsersController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
+      if (!req.file) throw new HttpError(400, 'Image is required');
+      // Subimos la imagen a Cloudinary
+      const imgData = await this.cloudinaryService.uploadImage(req.file.path);
+
+      // Añadimos la imagen al body de la petición para que se guarde en la base de datos
       req.body.image = {
         publicId: req.file?.filename,
         format: req.file?.mimetype,
         url: req.file?.path,
         size: req.file?.size,
+        cloudinaryURL: imgData.url,
       };
 
       debug('Controller-create:', req.body.image);

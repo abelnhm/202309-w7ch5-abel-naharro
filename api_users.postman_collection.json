@@ -52,7 +52,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3030/users/65637de4902eceea3eb055b1",
+					"raw": "http://localhost:3030/users/6564cc5d87478e351c4b0287",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -60,7 +60,7 @@
 					"port": "3030",
 					"path": [
 						"users",
-						"65637de4902eceea3eb055b1"
+						"6564cc5d87478e351c4b0287"
 					]
 				}
 			},
@@ -111,13 +111,34 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"luis@test.com\",\r\n    \"passwd\": \"12345\",\r\n    \"name\": \"Luis\",\r\n    \"surname\": \"N\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "abel11@test.com",
+							"type": "text"
+						},
+						{
+							"key": "passwd",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Abel",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "ISDI",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/abeln/Desktop/37263616.jpeg"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:3030/users/register",
@@ -141,7 +162,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"abel@test.com\",\r\n    \"passwd\": \"12345\"\r\n}",
+					"raw": "{\r\n    \"email\": \"abel9@isdi.com\",\r\n    \"passwd\": \"12345\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

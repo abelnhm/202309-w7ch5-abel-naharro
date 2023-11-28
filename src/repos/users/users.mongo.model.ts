@@ -10,8 +10,11 @@ const usersSchema = new Schema<User>({
   image: {
     publicId: String,
     size: Number,
+    width: Number,
+    height: Number,
     format: String,
     url: String,
+    cloudinaryURL: String,
   },
   friends: [
     {
