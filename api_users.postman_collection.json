@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "309e3459-4634-472d-99b7-725489f1240d",
+		"name": "api_users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27529043"
+	},
+	"item": [
+		{
+			"name": "All Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWY2MDEyOWQ3ZGU1MWRiNWNkZmY4NSIsImVtYWlsIjoiYWJlbDJAaXNkaS5jb20iLCJpYXQiOjE3MDA3NDk1MjF9.p_wnhC_I4lIPjkimKinOMAX209ujrMVM8Q9sjuJ_wrc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search user by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWY2NDFmYTk2YjdiZWY1NGE5YmY5MiIsImVtYWlsIjoiYWJlbDNAaXNkaS5jb20iLCJpYXQiOjE3MDA3NTA0MzZ9.a-S_i56nEhqEAZMUvw0CPILksmmSJO4cDTa6_zGclUY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/users/65637de4902eceea3eb055b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"users",
+						"65637de4902eceea3eb055b1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NWY2NDFmYTk2YjdiZWY1NGE5YmY5MiIsImVtYWlsIjoiYWJlbDNAaXNkaS5jb20iLCJpYXQiOjE3MDA3NTA0MzZ9.a-S_i56nEhqEAZMUvw0CPILksmmSJO4cDTa6_zGclUY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"friends\": [{\"_id\": \"65638064f80d50931e05ddac\"},{\"_id\": \"656381bc4c416eaefb3864ee\"}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3030/users/65637de4902eceea3eb055b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"users",
+						"65637de4902eceea3eb055b1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"luis@test.com\",\r\n    \"passwd\": \"12345\",\r\n    \"name\": \"Luis\",\r\n    \"surname\": \"N\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3030/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"abel@test.com\",\r\n    \"passwd\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3030/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
